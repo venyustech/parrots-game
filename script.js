@@ -13,6 +13,7 @@ function notTurnedCards(firstCard, secondCard) {
 
 function turnCard(cardOnClick) {
   if (cardOnClick.classList.contains("turned")) return;
+  if (firstCard !== undefined && secondCard !== undefined) return;
 
   cardOnClick.classList.add("turned");
   cardOnClick.classList.remove("not-turned");
