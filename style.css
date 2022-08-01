@@ -43,6 +43,7 @@ body {
   box-sizing: border-box;
   border-radius: 5px;
   background-color: #a7e9af;
+  margin-top: 10px;
 }
 .card .back-face {
   background-color: 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -77,10 +78,12 @@ body {
 
 @media (max-width: 700px) {
   .header {
-    position: fixed;
+    min-width: fit-content;
+    text-align: center;
+    padding: 10px;
   }
   .main-wrapper {
-    padding-top: 126px;
+    padding-top: 20px;
   }
   .main-wrapper,
   .card-wrapper {
