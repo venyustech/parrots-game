@@ -1,4 +1,31 @@
 let cardsQuantityPrompt = 0;
+
+let firstCard;
+let secondCard;
+function turnCard(cardOnClick) {
+  if (cardOnClick.classList.contains("turned")) return;
+
+  cardOnClick.classList.add("turned");
+  cardOnClick.classList.remove("not-turned");
+
+  if (firstCard === undefined) {
+    firstCard = cardOnClick;
+    return;
+  }
+  secondCard = cardOnClick;
+
+  if (firstCard.innerHTML !== secondCard.innerHTML) {
+    firstCard.classList.add("not-turned");
+    firstCard.classList.remove("turned");
+
+    secondCard.classList.add("not-turned");
+    secondCard.classList.remove("turned");
+  }
+
+  firstCard = undefined;
+  secondCard = undefined;
+}
+
 function loadPage() {
   do {
     cardsQuantityPrompt = parseInt(
@@ -36,7 +63,7 @@ function loadPage() {
   loadingCards.innerHTML = "";
   for (let i = 0; i < cardsStructure.length; i++) {
     loadingCards.innerHTML += `
-        <div class="card turned" data-identifier="card">
+        <div class="card not-turned" data-identifier="card" onclick="turnCard(this)">
           <div class="front-face face" data-identifier="front-face">
             <img class="logoImage" src="assets/front.png" alt="card" />
           </div>
