@@ -2,6 +2,15 @@ let cardsQuantityPrompt = 0;
 
 let firstCard;
 let secondCard;
+
+function notTurnedCards(firstCard, secondCard) {
+  firstCard.classList.add("not-turned");
+  firstCard.classList.remove("turned");
+
+  secondCard.classList.add("not-turned");
+  secondCard.classList.remove("turned");
+}
+
 function turnCard(cardOnClick) {
   if (cardOnClick.classList.contains("turned")) return;
 
@@ -15,11 +24,7 @@ function turnCard(cardOnClick) {
   secondCard = cardOnClick;
 
   if (firstCard.innerHTML !== secondCard.innerHTML) {
-    firstCard.classList.add("not-turned");
-    firstCard.classList.remove("turned");
-
-    secondCard.classList.add("not-turned");
-    secondCard.classList.remove("turned");
+    setTimeout(notTurnedCards, 1000, firstCard, secondCard);
   }
 
   firstCard = undefined;
